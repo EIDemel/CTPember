@@ -1,0 +1,40 @@
+<div class="ui green segment">
+  <span class="ui label">{{@model.employee.email}}</span>
+  <button class="ui black button" type="button" {{action "logout"}}>
+    Logout
+  </button>
+</div>
+<h1>Préparation des commandes</h1>
+
+<ul>
+  <h3>Créées</h3>
+  {{#each @model.orders as |order|}}
+    {{#if (eq order.status 'created')}}
+      <i class=" orange hourglass outline icon"></i>
+      <LinkTo @route="order" @model={{order.id}}>
+        {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+      </LinkTo>
+
+      {{#if (eq order.status 'prepared')}}
+        <div class="ui mini button green"> {{order.toPay}} €</div>
+      {{/if}}
+    {{/if}}
+    <br>
+  {{/each}}
+
+  <h3>Préparées</h3>
+
+  {{#each @model.orders as |order|}}
+    {{#if (eq order.status 'prepared')}}
+      <i class=" green check icon"></i>
+      <LinkTo @route="order" @model={{order.id}}>
+        {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+      </LinkTo>
+
+      {{#if (eq order.status 'prepared')}}
+        <div class="ui mini button green"> {{order.toPay}} €</div>
+      {{/if}}
+    {{/if}}
+    <br>
+  {{/each}}
+</ul>

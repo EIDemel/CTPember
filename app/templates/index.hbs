@@ -1,0 +1,22 @@
+{{page-title "Index"}}
+
+<form class="ui large form" {{action "login" @model on="submit"}}>
+
+  <div class="ui olive segment">
+    <h1>Connexion</h1>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="user icon"></i>
+        <Input  type="email" @value={{@model.email}} placeholder=" Votre email" required/>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <Input type="password" @value={{@model.password}} placeholder="Votre mot de passe" required/>
+      </div>
+    </div>
+    <button class=" ui button black  fluid " type="submit">Se connecter</button>
+  </div>
+</form>
+{{outlet}}
